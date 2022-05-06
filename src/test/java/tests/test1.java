@@ -1,6 +1,7 @@
 package tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,6 +15,9 @@ public class test1 {
 
         driver.get("https://demoqa.com/text-box");
         driver.manage().window().maximize();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+
 
         WebElement fullName = driver.findElement(By.id("userName"));
         fullName.click();
@@ -27,13 +31,19 @@ public class test1 {
         currentAddress.click();
         currentAddress.sendKeys("Samsun/İlkadım");
 
+
+
         WebElement permanentAddress = driver.findElement(By.id("permanentAddress"));
+        js.executeScript("arguments[0].scrollIntoView();", permanentAddress);
         permanentAddress.click();
         permanentAddress.sendKeys("Samsun/İlkadım");
+
+
 
         WebElement submitButton = driver.findElement(By.id("submit"));
         submitButton.click();
 
+       // driver.quit();
 
     }
 
