@@ -61,7 +61,7 @@ public class test1 {
         }
         else{
             System.out.println("Checkbox is unchecked");
-        }*/
+        }
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
@@ -85,7 +85,34 @@ public class test1 {
             }
         }
         boolean isSelected = sportCheckbox.isSelected();
-        System.out.println(isSelected);
+        System.out.println(isSelected);*/
+
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://demoqa.com/radio-button");
+        driver.manage().window().maximize();
+
+        WebElement yesRadiobuttonLabel = driver.findElement(new By.ByCssSelector("label[for='yesRadio']"));
+        boolean isEnabled = yesRadiobuttonLabel.isEnabled();
+
+        if (isEnabled){
+            yesRadiobuttonLabel.click();
+            System.out.println("Clicked yesRadio button");
+        }
+
+        WebElement yesRadiobutton = driver.findElement(By.id("yesRadio"));
+        boolean isSelected = yesRadiobutton.isSelected();
+
+        if (isSelected){
+            System.out.println("yesRadio button is Selected");
+        }
+
+        WebElement output = driver.findElement(new By.ByCssSelector("p.mt-3"));
+        System.out.println(output.getText());
+
+        WebElement noRadioButton = driver.findElement(By.id("noRadio"));
+        System.out.println(noRadioButton.isEnabled());
 
 
     }
