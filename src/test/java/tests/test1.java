@@ -1,16 +1,13 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class test1 {
 
     public static void main(String[] args) {
 
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+       /* System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
         //driver.get("https://demoqa.com/text-box");
@@ -19,7 +16,7 @@ public class test1 {
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
 
-       /* WebElement fullName = driver.findElement(By.id("userName"));
+        WebElement fullName = driver.findElement(By.id("userName"));
         fullName.click();
         fullName.sendKeys("Kürşat Tezgel");
 
@@ -50,7 +47,7 @@ public class test1 {
         String e_mail = emailText.getText();
 
         System.out.println(e_mail);
-        System.out.println(name); */
+        System.out.println(name);
 
         String homeCheckBoxCssValue = "label[for='tree-node-home'] span.rct-checkbox svg";
         WebElement homeCheckbox = driver.findElement(new By.ByCssSelector(homeCheckBoxCssValue));
@@ -64,7 +61,32 @@ public class test1 {
         }
         else{
             System.out.println("Checkbox is unchecked");
+        }*/
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://demoqa.com/automation-practice-form");
+        driver.manage().window().maximize();
+
+        WebElement sportCheckbox = driver.findElement(By.id("hobbies-checkbox-1"));
+        boolean isEnabled = sportCheckbox.isEnabled();
+        System.out.println(isEnabled);
+
+        WebElement sportCheckboxlabel = driver.findElement(new By.ByCssSelector("label[for='hobbies-checkbox-1']"));
+
+
+        if (isEnabled) {
+            try {
+                System.out.println("Entered try block");
+                sportCheckbox.click();
+            } catch (ElementClickInterceptedException e) {
+                sportCheckboxlabel.click();
+                System.out.println("Enter catch block");
+            }
         }
+        boolean isSelected = sportCheckbox.isSelected();
+        System.out.println(isSelected);
+
 
     }
 
